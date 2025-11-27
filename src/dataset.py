@@ -8,10 +8,7 @@ import torch.optim as optim
 import torch.utils.data as data
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
-
-NUM_EPOCHS = 3
-BATCH_SIZE = 128
-lr = 0.001
+from utils.config import BATCH_SIZE
 
 info = INFO["pathmnist"]
 task = info["task"]
@@ -50,7 +47,9 @@ class Dataset:
 
     def visualize_data(self):
         samples_per_class = 5
-        fig, axes = plt.subplots(n_classes, samples_per_class, figsize=(samples_per_class * 2, n_classes * 2))
+        fig, axes = plt.subplots(
+            n_classes, samples_per_class, figsize=(samples_per_class * 2, n_classes * 2)
+        )
         imgs = train_dataset.imgs
         labels = train_dataset.labels.flatten()
         for class_idx in range(n_classes):
@@ -58,8 +57,8 @@ class Dataset:
             for i, idx in enumerate(class_indices):
                 img = imgs[idx]
                 axes[class_idx, i].imshow(img)
-                axes[class_idx, i].set_title(f'Class {class_idx}')
-                axes[class_idx, i].axis('off')
+                axes[class_idx, i].set_title(f"Class {class_idx}")
+                axes[class_idx, i].axis("off")
         plt.tight_layout()
         plt.show()
 

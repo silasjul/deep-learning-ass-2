@@ -1,0 +1,3 @@
+NUM_EPOCHS = 3
+BATCH_SIZE = 128
+lr = 0.001
