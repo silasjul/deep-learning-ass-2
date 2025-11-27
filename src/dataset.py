@@ -3,7 +3,7 @@ import numpy as np
 import torch.utils.data as data
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
-from utils.config import BATCH_SIZE
+from .utils.config import BATCH_SIZE
 
 info = INFO["pathmnist"]
 task = info["task"]

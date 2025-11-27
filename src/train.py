@@ -1,16 +1,16 @@
 import torch.optim as optim
 import torch.nn as nn
-import tqdm
+from tqdm import tqdm
 import torch
 from medmnist import Evaluator
 from .model import Model
-from .dataset import Dataset, in_channels, num_classes
+from .dataset import Dataset, n_channels, n_classes
 from .utils.config import EPOCHS, lr
 
 
 def train():
     dataset = Dataset()
-    model = Model(in_channels, num_classes)
+    model = Model(n_channels, n_classes)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
 
