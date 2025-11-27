@@ -1,10 +1,5 @@
-import medmnist
 from medmnist import PathMNIST, INFO
-from tqdm import tqdm
 import numpy as np
-import torch
-import torch.nn as nn
-import torch.optim as optim
 import torch.utils.data as data
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
@@ -16,7 +11,10 @@ n_channels = info["n_channels"]
 n_classes = len(info["label"])
 
 data_transform = transforms.Compose(
-    [transforms.ToTensor(), transforms.Normalize(mean=[0.5], std=[0.5])]
+    [  # mean and std found in github documentation
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.5], std=[0.5]),
+    ]
 )
 
 train_dataset = PathMNIST(split="train", transform=data_transform, download=True)
